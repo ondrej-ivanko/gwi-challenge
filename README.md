@@ -28,3 +28,6 @@ List favourite dinosaurs by using `favourite=true` query parameter.
 You can also user curl:
 - `curl -X POST --user <superusername:superuser password> "http://0.0.0.0:8000/dinosaurs/2/update_dino_favourite" -v`
 - `curl -X DELETE --user <superusername:superuser password> "http://0.0.0.0:8000/dinosaurs/2/update_dino_favourite" -v`
+
+## To run tests
+`./manage.py test`
