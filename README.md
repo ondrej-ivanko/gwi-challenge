@@ -1,33 +1,27 @@
-# GlobalWebIndex Python Challenge - v1 | Exercise: DinosaursAficionado
+## Instalation
+```
+git clone
+cd ..
+poetry install
 
-Create a Python application for Dinosaurs Aficionados which is going to be used to maintain and provide various information about all kinds of Dinosaurs.
+```
 
-As an application administrator you’d like to have the ability to :
-* Add a kind of dinosaur 
-  * Name
-  * Eating classification e.g [herbivores, omnivores, and carnivores]
-  * Typical Colour
-  * Period they lived e.g [triassic , jurassic, cretaceous, paleogene, neogene]
-  * Average Size e.g [tiny, very small, small, medium, large, very large etc]).
-* Remove a kind(s) of dinosaur(s)
-* Associate up to 2 images with each dinosaur
-* Remove image(s) 
+## Run
+```
+poetry shell
+cd dinopedia
+./manage.py createsuperuser --username <your username> --email <your email> --password
+./manage.py runserver 0.0.0.0:8000
 
-As a developer you’d like to Integrate with the application and have the ability to : 
-* Find all the available kinds of dinosaurs
-* Search for a particular kind and get their images
-* Like your favourite (Optional)
-* See your favourites (Optional)
+```
 
-We would like you to try and present a well written solution that will cover the above criteria. Utilising the following points
-* Python 3.*
-* Django (_Current repo uses a django template. Feel free to restructure if your solution is based on anything else like flask/fast api etc_)
-* Database integration (Postgres or any equivalent)
-* Docker
-* Testing suite
-* README
+## Exposed REST endpoints
+/admin/ - Admin intefrace for managing application resources. Includes Picture, Dinosaur and User models management.
+/dinosaurs - list all dinosaurs in database. Filtering of dinosaurs by attributes can be done via Filter widget on top of the webpage.
+List favourite dinosaurs by using `favourite=true` query parameter.
+/dinosaurs/<pk> - list specific dinosaur. Extra action on top of the bar allows making of relationship between authenticated User and his favourite Dinosaur.
+/dinosaurs/<pk>/update_dino_favourite - allows creation/deletion of Favourite dinosaur for authenticated User.
+You can also user curl:
+`curl -X POST --user oji:ADMIN789 "http://0.0.0.0:8000/dinosaurs/2/update_dino_favourite" -v`
+`curl -X DELETE --user oji:ADMIN789 "http://0.0.0.0:8000/dinosaurs/2/update_dino_favourite" -v`
 
-Get creative as much as you want, we WILL appreciate it. You will not be evaluated based on how well you follow these instructions, but based on how sensible your solution will be. In case you are not able to implement something you would normally implement for time reasons, make it clear with a comment.
-
-# Submission
-Just create a private repo out of this and send invites to collaborate/review on the following emails <cbekos@gwi.com> / <tvesela@gwi.com> / <kgiannousis@gwi.com> / <zmaxa@gwi.com> / <ecechal@gwi.com>
